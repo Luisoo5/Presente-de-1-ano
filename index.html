@@ -3,188 +3,208 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nosso Amor ❤️</title>
+<title>Nossa História ❤️</title>
 
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:'Segoe UI',sans-serif;
-}
-
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif}
 body{
-  height:100vh;
+  background:linear-gradient(180deg,#ff4d88,#8b0033);
   overflow:hidden;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  background:radial-gradient(circle at top,#ff4d88,#8b0033 70%);
   color:white;
   text-align:center;
 }
 
-/* estrelas */
-.star{
-  position:absolute;
-  width:2px;
-  height:2px;
-  background:white;
-  animation:twinkle 2s infinite alternate;
-}
-@keyframes twinkle{
-  from{opacity:0.2;}
-  to{opacity:1;}
-}
-
-/* container principal */
+/* Container */
 .container{
+  position:relative;
   z-index:2;
-  backdrop-filter:blur(20px);
-  background:rgba(255,255,255,0.1);
-  padding:40px;
-  border-radius:25px;
-  box-shadow:0 0 40px rgba(255,0,120,0.7);
-  width:90%;
-  max-width:700px;
+  padding:30px;
 }
 
-/* texto digitando */
-.typing{
-  font-size:22px;
-  margin-bottom:20px;
-  min-height:60px;
-}
-
-/* contador */
-.countdown{
+/* Contadores */
+.countdown,.together{
   display:flex;
-  justify-content:space-around;
-  margin-top:20px;
+  justify-content:center;
+  gap:15px;
+  margin:15px 0;
+  flex-wrap:wrap;
 }
 
 .box{
   background:rgba(255,255,255,0.2);
   padding:15px;
   border-radius:15px;
-  width:80px;
-  transition:0.3s;
+  width:90px;
+  backdrop-filter:blur(10px);
 }
-.box:hover{
-  transform:scale(1.1);
-}
+
 .box span{
-  font-size:28px;
+  font-size:22px;
   font-weight:bold;
+  display:block;
 }
 
-/* coração flutuando */
-.heart{
+/* Envelope */
+.envelope{
+  margin:30px auto;
+  width:120px;
+  height:80px;
+  background:#fff;
+  position:relative;
+  cursor:pointer;
+  border-radius:5px;
+}
+
+.envelope:before{
+  content:'';
   position:absolute;
-  bottom:-20px;
-  color:#ff99c8;
-  animation:float 6s linear infinite;
-}
-@keyframes float{
-  0%{transform:translateY(0) scale(1); opacity:1;}
-  100%{transform:translateY(-100vh) scale(1.5); opacity:0;}
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:#ff1e56;
+  clip-path:polygon(0 0,50% 50%,100% 0);
+  transition:1s;
 }
 
-#finalMessage{
-  margin-top:20px;
-  font-size:20px;
-  font-weight:bold;
+.envelope.open:before{
+  transform:rotateX(180deg);
+  transform-origin:top;
 }
+
+/* Carta */
+.letter{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.9);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:30px;
+  text-align:center;
+  opacity:0;
+  visibility:hidden;
+  transition:1s;
+}
+
+.letter.show{
+  opacity:1;
+  visibility:visible;
+}
+
+.letterContent{
+  background:white;
+  color:#8b0033;
+  padding:30px;
+  border-radius:15px;
+  max-width:600px;
+  font-size:18px;
+  line-height:1.6;
+}
+
+/* Pétalas */
+.petal{
+  position:fixed;
+  top:-10px;
+  font-size:20px;
+  animation:fall linear forwards;
+}
+
+@keyframes fall{
+  to{
+    transform:translateY(110vh) rotate(360deg);
+    opacity:0;
+  }
+}
+
 </style>
 </head>
 <body>
 
 <div class="container">
-  <div class="typing" id="typingText"></div>
 
-  <div class="countdown">
-    <div class="box">
-      <span id="days">0</span>
-      <small>Dias</small>
-    </div>
-    <div class="box">
-      <span id="hours">0</span>
-      <small>Horas</small>
-    </div>
-    <div class="box">
-      <span id="minutes">0</span>
-      <small>Minutos</small>
-    </div>
-    <div class="box">
-      <span id="seconds">0</span>
-      <small>Segundos</small>
-    </div>
-  </div>
+<h1>💖 Nossa História 💖</h1>
 
-  <div id="finalMessage"></div>
+<h2>Estamos juntos há:</h2>
+<div class="together">
+  <div class="box"><span id="tDays">0</span><small>Dias</small></div>
+  <div class="box"><span id="tHours">0</span><small>Horas</small></div>
+  <div class="box"><span id="tMinutes">0</span><small>Minutos</small></div>
 </div>
+
+<h2>Falta para 1 ano:</h2>
+<div class="countdown">
+  <div class="box"><span id="days">0</span><small>Dias</small></div>
+  <div class="box"><span id="hours">0</span><small>Horas</small></div>
+  <div class="box"><span id="minutes">0</span><small>Minutos</small></div>
+  <div class="box"><span id="seconds">0</span><small>Segundos</small></div>
+</div>
+
+<div class="envelope" onclick="openLetter()" id="envelope"></div>
+<p>Clique na carta 💌</p>
+
+</div>
+
+<div class="letter" id="letter">
+  <div class="letterContent">
+    Desde 02/03/2025 minha vida mudou completamente. 💖<br><br>
+    Cada segundo ao seu lado é especial.<br><br>
+    Esse contador não mede tempo…  
+    mede o quanto eu te amo.<br><br>
+    Obrigado por existir na minha vida. 🌹
+    <br><br>
+    (Clique em qualquer lugar para fechar)
+  </div>
+</div>
+
+<audio id="music" loop>
+<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_2f6a77bfa2.mp3?filename=romantic-piano-110624.mp3" type="audio/mp3">
+</audio>
 
 <script>
 
-/* 🌟 Estrelas */
-for(let i=0;i<80;i++){
-  let star=document.createElement("div");
-  star.className="star";
-  star.style.top=Math.random()*100+"vh";
-  star.style.left=Math.random()*100+"vw";
-  star.style.animationDuration=(Math.random()*3+1)+"s";
-  document.body.appendChild(star);
-}
+/* Datas */
+const startDate=new Date(2025,2,2,0,0,0).getTime();
+const anniversary=new Date(2026,2,2,0,0,0).getTime();
 
-/* 💖 Corações */
+/* Atualização tempo */
 setInterval(()=>{
-  let heart=document.createElement("div");
-  heart.className="heart";
-  heart.innerHTML="❤️";
-  heart.style.left=Math.random()*100+"vw";
-  heart.style.fontSize=(Math.random()*20+15)+"px";
-  document.body.appendChild(heart);
-  setTimeout(()=>heart.remove(),6000);
-},500);
-
-/* ✍️ Texto digitando */
-const text="Desde o dia que você entrou na minha vida... cada segundo tem mais significado. 💖 Estamos contando o tempo para celebrar a coisa mais linda que existe: o nosso amor.";
-let index=0;
-function typeEffect(){
-  if(index<text.length){
-    document.getElementById("typingText").innerHTML+=text.charAt(index);
-    index++;
-    setTimeout(typeEffect,40);
-  }
-}
-typeEffect();
-
-/* ⏳ Contador */
-const targetDate=new Date(2026,2,2,0,0,0).getTime();
-
-const countdown=setInterval(function(){
   const now=new Date().getTime();
-  const distance=targetDate-now;
 
-  if(distance<=0){
-    clearInterval(countdown);
-    document.querySelector(".countdown").style.display="none";
-    document.getElementById("finalMessage").innerHTML=
-      "💖 Hoje celebramos o nosso amor. Feliz aniversário de namoro! Você é a melhor parte da minha vida. 💖";
-    return;
-  }
+  const together=now-startDate;
+  document.getElementById("tDays").innerText=Math.floor(together/(1000*60*60*24));
+  document.getElementById("tHours").innerText=Math.floor((together%(1000*60*60*24))/(1000*60*60));
+  document.getElementById("tMinutes").innerText=Math.floor((together%(1000*60*60))/(1000*60));
 
-  const days=Math.floor(distance/(1000*60*60*24));
-  const hours=Math.floor((distance%(1000*60*60*24))/(1000*60*60));
-  const minutes=Math.floor((distance%(1000*60*60))/(1000*60));
-  const seconds=Math.floor((distance%(1000*60))/1000);
-
-  document.getElementById("days").innerHTML=days;
-  document.getElementById("hours").innerHTML=hours;
-  document.getElementById("minutes").innerHTML=minutes;
-  document.getElementById("seconds").innerHTML=seconds;
+  const distance=anniversary-now;
+  document.getElementById("days").innerText=Math.floor(distance/(1000*60*60*24));
+  document.getElementById("hours").innerText=Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+  document.getElementById("minutes").innerText=Math.floor((distance%(1000*60*60))/(1000*60));
+  document.getElementById("seconds").innerText=Math.floor((distance%(1000*60))/1000);
 
 },1000);
+
+/* Pétalas */
+setInterval(()=>{
+  const petal=document.createElement("div");
+  petal.className="petal";
+  petal.innerHTML="🌸";
+  petal.style.left=Math.random()*100+"vw";
+  petal.style.animationDuration=(Math.random()*5+5)+"s";
+  document.body.appendChild(petal);
+  setTimeout(()=>petal.remove(),10000);
+},300);
+
+/* Carta + Música */
+function openLetter(){
+  document.getElementById("envelope").classList.add("open");
+  document.getElementById("letter").classList.add("show");
+  document.getElementById("music").play();
+}
+
+document.getElementById("letter").onclick=function(){
+  this.classList.remove("show");
+}
 
 </script>
 
