@@ -1,0 +1,85 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(-45deg, #ff4e88, #ff1e56, #ff6fa5, #ff99c8);
+  background-size: 400% 400%;
+  animation: gradient 10s ease infinite;
+  color: white;
+  overflow: hidden;
+}
+
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.container {
+  text-align: center;
+  backdrop-filter: blur(15px);
+  background: rgba(255,255,255,0.1);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 0 40px rgba(255, 0, 100, 0.5);
+}
+
+h1 {
+  font-size: 28px;
+  margin-bottom: 10px;
+  animation: pulse 2s infinite;
+}
+
+.subtitle {
+  margin-bottom: 30px;
+  font-size: 18px;
+  opacity: 0.9;
+}
+
+.countdown {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.time-box {
+  background: rgba(255,255,255,0.2);
+  padding: 20px;
+  border-radius: 15px;
+  width: 90px;
+  transition: transform 0.3s;
+}
+
+.time-box:hover {
+  transform: scale(1.1);
+}
+
+.time-box span {
+  font-size: 32px;
+  font-weight: bold;
+  display: block;
+}
+
+small {
+  font-size: 14px;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+#message {
+  margin-top: 25px;
+  font-size: 20px;
+  font-weight: bold;
+}
