@@ -3,219 +3,198 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nossa História ❤️</title>
+<title>Nosso Amor ❤️</title>
 
 <style>
 *{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:Arial, sans-serif;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Georgia', serif;
 }
 
 body{
-  background:linear-gradient(180deg,#6a0019,#30000b);
-  color:white;
-  text-align:center;
-  overflow-x:hidden;
+    height:100vh;
+    background: linear-gradient(135deg,#2b0000,#4b0000,#000);
+    color:#fff;
+    overflow:hidden;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
 }
 
-/* Container principal */
 .container{
-  padding:30px 20px;
-  position:relative;
-  z-index:1;
+    z-index:10;
+    padding:20px;
 }
 
-/* Contadores */
-.countdown,.together{
-  display:flex;
-  justify-content:center;
-  gap:12px;
-  margin:15px 0;
-  flex-wrap:wrap;
+h1{
+    font-size:40px;
+    margin-bottom:20px;
+    animation: fadeIn 2s ease;
 }
 
-.box{
-  background:rgba(255,255,255,0.15);
-  padding:15px;
-  border-radius:15px;
-  width:85px;
+#contador{
+    font-size:22px;
+    margin-bottom:20px;
 }
 
-.box span{
-  font-size:20px;
-  font-weight:bold;
-  display:block;
+button{
+    background:#ff4d6d;
+    border:none;
+    padding:15px 25px;
+    border-radius:30px;
+    font-size:18px;
+    cursor:pointer;
+    color:white;
+    transition:0.3s;
 }
 
-/* Envelope */
-.envelope{
-  margin:30px auto;
-  width:120px;
-  height:80px;
-  background:white;
-  position:relative;
-  cursor:pointer;
-  border-radius:6px;
-  z-index:2;
+button:hover{
+    transform:scale(1.1);
+    box-shadow:0 0 20px #ff4d6d;
 }
 
-.envelope::before{
-  content:'';
-  position:absolute;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  background:#ff1e56;
-  clip-path:polygon(0 0,50% 50%,100% 0);
-  transition:0.8s;
+.carta{
+    position:fixed;
+    bottom:-100%;
+    left:0;
+    width:100%;
+    height:100%;
+    background:#fff0f3;
+    color:#300;
+    padding:40px;
+    overflow:auto;
+    transition:1s ease;
 }
 
-.envelope.open::before{
-  transform:rotateX(180deg);
-  transform-origin:top;
+.carta.aberta{
+    bottom:0;
 }
 
-/* Carta corrigida */
-.letter{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,0.85);
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  padding:20px;
-  opacity:0;
-  visibility:hidden;
-  transition:0.4s;
-  z-index:9999; /* 🔥 prioridade máxima */
+.carta h2{
+    margin-bottom:20px;
+    color:#800020;
 }
 
-.letter.show{
-  opacity:1;
-  visibility:visible;
+.carta p{
+    font-size:20px;
+    line-height:1.6;
 }
 
-.letterContent{
-  background:white;
-  color:#6a0019;
-  padding:25px;
-  border-radius:15px;
-  max-width:500px;
-  width:100%;
-  font-size:16px;
-  line-height:1.6;
+.petala{
+    position:fixed;
+    top:-10px;
+    width:15px;
+    height:15px;
+    background:pink;
+    border-radius:50%;
+    opacity:0.7;
+    animation: cair linear infinite;
 }
 
-/* Pétalas */
-.petal{
-  position:fixed;
-  top:-20px;
-  font-size:20px;
-  animation:fall linear forwards;
-  z-index:0;
+@keyframes cair{
+    to{
+        transform:translateY(110vh) rotate(360deg);
+    }
 }
 
-@keyframes fall{
-  to{
-    transform:translateY(110vh) rotate(360deg);
-    opacity:0;
-  }
+@keyframes fadeIn{
+    from{opacity:0;}
+    to{opacity:1;}
 }
-
 </style>
 </head>
+
 <body>
 
 <div class="container">
-
-<h1>💖 Nossa História 💖</h1>
-
-<h2>Estamos juntos há:</h2>
-<div class="together">
-  <div class="box"><span id="tDays">0</span><small>Dias</small></div>
-  <div class="box"><span id="tHours">0</span><small>Horas</small></div>
-  <div class="box"><span id="tMinutes">0</span><small>Minutos</small></div>
+    <h1>Desde 02 de Março de 2025 ❤️</h1>
+    <div id="contador"></div>
+    <button onclick="abrirCarta()">💌 Abrir Minha Carta</button>
 </div>
 
-<h2>Falta para 1 ano:</h2>
-<div class="countdown">
-  <div class="box"><span id="days">0</span><small>Dias</small></div>
-  <div class="box"><span id="hours">0</span><small>Horas</small></div>
-  <div class="box"><span id="minutes">0</span><small>Minutos</small></div>
-  <div class="box"><span id="seconds">0</span><small>Segundos</small></div>
+<div class="carta" id="carta">
+    <h2>Minha Vida,</h2>
+    <p>
+    Eu poderia escrever mil coisas aqui… mas nenhuma seria suficiente para explicar
+    o que você significa para mim.<br><br>
+
+    Desde o dia 2 de março de 2025, minha vida ganhou cor, direção e sentido.
+    Você não foi só alguém que entrou na minha história…
+    você virou o melhor capítulo dela.<br><br>
+
+    Cada segundo ao seu lado vale mais que qualquer sonho que eu já tive.
+    Cada sorriso seu cura coisas em mim que ninguém nunca conseguiu curar.<br><br>
+
+    E enquanto o mundo muda, o tempo passa e os dias correm…
+    meu sentimento por você só cresce.<br><br>
+
+    Eu não estou contando os dias apenas para 2 de março.
+    Estou contando os dias porque cada um deles com você
+    é uma prova de que eu fiz a escolha certa.<br><br>
+
+    Se um dia você duvidar do meu amor,
+    volta aqui…
+    e lembra que alguém criou um universo inteiro
+    só pra te lembrar o quanto você é amada. ❤️
+    </p>
 </div>
 
-<div class="envelope" onclick="openLetter()" id="envelope"></div>
-<p>Clique na carta 💌</p>
-
-</div>
-
-<!-- Carta corrigida -->
-<div class="letter" id="letter">
-  <div class="letterContent">
-    Desde 02/03/2025 minha vida mudou completamente. 💖<br><br>
-    Cada segundo ao seu lado é especial.<br><br>
-    Esse contador não mede tempo…  
-    mede o quanto eu te amo.<br><br>
-    Obrigado por fazer parte da minha vida. 🌹<br><br>
-    <strong>(Toque fora da carta para fechar)</strong>
-  </div>
-</div>
-
-<audio id="music" loop>
-<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_2f6a77bfa2.mp3?filename=romantic-piano-110624.mp3" type="audio/mp3">
+<audio id="musica" loop>
+<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_1f4d03a2e8.mp3?filename=romantic-love-ambient-110397.mp3">
 </audio>
 
 <script>
 
-/* Datas */
-const startDate=new Date(2025,2,2,0,0,0).getTime();
-const anniversary=new Date(2026,2,2,0,0,0).getTime();
+// DATA DO INÍCIO
+const inicio = new Date("2025-03-02T00:00:00");
 
-/* Atualização tempo */
-setInterval(()=>{
-  const now=new Date().getTime();
-
-  const together=now-startDate;
-  document.getElementById("tDays").innerText=Math.floor(together/(1000*60*60*24));
-  document.getElementById("tHours").innerText=Math.floor((together%(1000*60*60*24))/(1000*60*60));
-  document.getElementById("tMinutes").innerText=Math.floor((together%(1000*60*60))/(1000*60));
-
-  const distance=anniversary-now;
-  document.getElementById("days").innerText=Math.floor(distance/(1000*60*60*24));
-  document.getElementById("hours").innerText=Math.floor((distance%(1000*60*60*24))/(1000*60*60));
-  document.getElementById("minutes").innerText=Math.floor((distance%(1000*60*60))/(1000*60));
-  document.getElementById("seconds").innerText=Math.floor((distance%(1000*60))/1000);
-
-},1000);
-
-/* Pétalas */
-setInterval(()=>{
-  const petal=document.createElement("div");
-  petal.className="petal";
-  petal.innerHTML="🌸";
-  petal.style.left=Math.random()*100+"vw";
-  petal.style.animationDuration=(Math.random()*5+5)+"s";
-  document.body.appendChild(petal);
-  setTimeout(()=>petal.remove(),10000);
-},400);
-
-/* Carta + Música */
-function openLetter(){
-  document.getElementById("envelope").classList.add("open");
-  document.getElementById("letter").classList.add("show");
-  document.getElementById("music").play();
+// PRÓXIMO 2 DE MARÇO
+function proximoAniversario(){
+    const agora = new Date();
+    let ano = agora.getFullYear();
+    let data = new Date(`${ano}-03-02T00:00:00`);
+    if(agora > data){
+        data = new Date(`${ano+1}-03-02T00:00:00`);
+    }
+    return data;
 }
 
-/* Fecha ao clicar fora */
-document.getElementById("letter").addEventListener("click",function(e){
-  if(e.target.id==="letter"){
-    this.classList.remove("show");
-  }
-});
+function atualizarContador(){
+    const agora = new Date();
+    const aniversario = proximoAniversario();
+    const diff = aniversario - agora;
+
+    const dias = Math.floor(diff/(1000*60*60*24));
+    const horas = Math.floor((diff/(1000*60*60))%24);
+    const minutos = Math.floor((diff/(1000*60))%60);
+    const segundos = Math.floor((diff/1000)%60);
+
+    const juntos = agora - inicio;
+    const diasJuntos = Math.floor(juntos/(1000*60*60*24));
+
+    document.getElementById("contador").innerHTML =
+        `Estamos juntos há <b>${diasJuntos} dias</b> ❤️<br><br>
+         Faltam <b>${dias} dias ${horas}h ${minutos}m ${segundos}s</b> para nosso próximo 2 de março 💖`;
+}
+
+setInterval(atualizarContador,1000);
+
+function abrirCarta(){
+    document.getElementById("carta").classList.add("aberta");
+    document.getElementById("musica").play();
+}
+
+// PÉTALAS
+for(let i=0;i<25;i++){
+    let petala = document.createElement("div");
+    petala.classList.add("petala");
+    petala.style.left = Math.random()*100 + "vw";
+    petala.style.animationDuration = (5 + Math.random()*5)+"s";
+    document.body.appendChild(petala);
+}
 
 </script>
 
