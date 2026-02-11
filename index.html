@@ -1,40 +1,192 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Nosso Amor ❤️</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nosso Amor ❤️</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Segoe UI',sans-serif;
+}
+
+body{
+  height:100vh;
+  overflow:hidden;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:radial-gradient(circle at top,#ff4d88,#8b0033 70%);
+  color:white;
+  text-align:center;
+}
+
+/* estrelas */
+.star{
+  position:absolute;
+  width:2px;
+  height:2px;
+  background:white;
+  animation:twinkle 2s infinite alternate;
+}
+@keyframes twinkle{
+  from{opacity:0.2;}
+  to{opacity:1;}
+}
+
+/* container principal */
+.container{
+  z-index:2;
+  backdrop-filter:blur(20px);
+  background:rgba(255,255,255,0.1);
+  padding:40px;
+  border-radius:25px;
+  box-shadow:0 0 40px rgba(255,0,120,0.7);
+  width:90%;
+  max-width:700px;
+}
+
+/* texto digitando */
+.typing{
+  font-size:22px;
+  margin-bottom:20px;
+  min-height:60px;
+}
+
+/* contador */
+.countdown{
+  display:flex;
+  justify-content:space-around;
+  margin-top:20px;
+}
+
+.box{
+  background:rgba(255,255,255,0.2);
+  padding:15px;
+  border-radius:15px;
+  width:80px;
+  transition:0.3s;
+}
+.box:hover{
+  transform:scale(1.1);
+}
+.box span{
+  font-size:28px;
+  font-weight:bold;
+}
+
+/* coração flutuando */
+.heart{
+  position:absolute;
+  bottom:-20px;
+  color:#ff99c8;
+  animation:float 6s linear infinite;
+}
+@keyframes float{
+  0%{transform:translateY(0) scale(1); opacity:1;}
+  100%{transform:translateY(-100vh) scale(1.5); opacity:0;}
+}
+
+#finalMessage{
+  margin-top:20px;
+  font-size:20px;
+  font-weight:bold;
+}
+</style>
 </head>
 <body>
 
-  <div class="background"></div>
+<div class="container">
+  <div class="typing" id="typingText"></div>
 
-  <div class="container">
-    <h1>💖 Contando cada segundo para celebrar nosso amor 💖</h1>
-    <p class="subtitle">2 de Março – Nosso dia especial</p>
-
-    <div class="countdown">
-      <div class="time-box">
-        <span id="days">0</span>
-        <small>Dias</small>
-      </div>
-      <div class="time-box">
-        <span id="hours">0</span>
-        <small>Horas</small>
-      </div>
-      <div class="time-box">
-        <span id="minutes">0</span>
-        <small>Minutos</small>
-      </div>
-      <div class="time-box">
-        <span id="seconds">0</span>
-        <small>Segundos</small>
-      </div>
+  <div class="countdown">
+    <div class="box">
+      <span id="days">0</span>
+      <small>Dias</small>
     </div>
-
-    <div id="message"></div>
+    <div class="box">
+      <span id="hours">0</span>
+      <small>Horas</small>
+    </div>
+    <div class="box">
+      <span id="minutes">0</span>
+      <small>Minutos</small>
+    </div>
+    <div class="box">
+      <span id="seconds">0</span>
+      <small>Segundos</small>
+    </div>
   </div>
 
-  <script src="script.js"></script>
+  <div id="finalMessage"></div>
+</div>
+
+<script>
+
+/* 🌟 Estrelas */
+for(let i=0;i<80;i++){
+  let star=document.createElement("div");
+  star.className="star";
+  star.style.top=Math.random()*100+"vh";
+  star.style.left=Math.random()*100+"vw";
+  star.style.animationDuration=(Math.random()*3+1)+"s";
+  document.body.appendChild(star);
+}
+
+/* 💖 Corações */
+setInterval(()=>{
+  let heart=document.createElement("div");
+  heart.className="heart";
+  heart.innerHTML="❤️";
+  heart.style.left=Math.random()*100+"vw";
+  heart.style.fontSize=(Math.random()*20+15)+"px";
+  document.body.appendChild(heart);
+  setTimeout(()=>heart.remove(),6000);
+},500);
+
+/* ✍️ Texto digitando */
+const text="Desde o dia que você entrou na minha vida... cada segundo tem mais significado. 💖 Estamos contando o tempo para celebrar a coisa mais linda que existe: o nosso amor.";
+let index=0;
+function typeEffect(){
+  if(index<text.length){
+    document.getElementById("typingText").innerHTML+=text.charAt(index);
+    index++;
+    setTimeout(typeEffect,40);
+  }
+}
+typeEffect();
+
+/* ⏳ Contador */
+const targetDate=new Date(2026,2,2,0,0,0).getTime();
+
+const countdown=setInterval(function(){
+  const now=new Date().getTime();
+  const distance=targetDate-now;
+
+  if(distance<=0){
+    clearInterval(countdown);
+    document.querySelector(".countdown").style.display="none";
+    document.getElementById("finalMessage").innerHTML=
+      "💖 Hoje celebramos o nosso amor. Feliz aniversário de namoro! Você é a melhor parte da minha vida. 💖";
+    return;
+  }
+
+  const days=Math.floor(distance/(1000*60*60*24));
+  const hours=Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+  const minutes=Math.floor((distance%(1000*60*60))/(1000*60));
+  const seconds=Math.floor((distance%(1000*60))/1000);
+
+  document.getElementById("days").innerHTML=days;
+  document.getElementById("hours").innerHTML=hours;
+  document.getElementById("minutes").innerHTML=minutes;
+  document.getElementById("seconds").innerHTML=seconds;
+
+},1000);
+
+</script>
+
 </body>
 </html>
