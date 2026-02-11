@@ -7,193 +7,208 @@
 
 <style>
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family: 'Georgia', serif;
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
 body{
-    height:100vh;
-    background: linear-gradient(135deg,#2b0000,#4b0000,#000);
-    color:#fff;
-    overflow:hidden;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
+height:100vh;
+background: linear-gradient(135deg,#1a0000,#3d0000,#000);
+font-family: 'Georgia', serif;
+color:white;
+overflow:hidden;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+position:relative;
 }
 
-.container{
-    z-index:10;
-    padding:20px;
+/* CONTEÚDO PRINCIPAL */
+.main{
+z-index:5;
+padding:20px;
 }
 
 h1{
-    font-size:40px;
-    margin-bottom:20px;
-    animation: fadeIn 2s ease;
+font-size:32px;
+margin-bottom:15px;
 }
 
 #contador{
-    font-size:22px;
-    margin-bottom:20px;
+font-size:18px;
+margin-bottom:20px;
+line-height:1.6;
 }
 
 button{
-    background:#ff4d6d;
-    border:none;
-    padding:15px 25px;
-    border-radius:30px;
-    font-size:18px;
-    cursor:pointer;
-    color:white;
-    transition:0.3s;
+background:#ff4d6d;
+border:none;
+padding:14px 25px;
+border-radius:40px;
+font-size:18px;
+color:white;
+cursor:pointer;
+transition:0.3s;
 }
 
 button:hover{
-    transform:scale(1.1);
-    box-shadow:0 0 20px #ff4d6d;
+transform:scale(1.08);
+box-shadow:0 0 20px #ff4d6d;
 }
 
+/* CARTA */
 .carta{
-    position:fixed;
-    bottom:-100%;
-    left:0;
-    width:100%;
-    height:100%;
-    background:#fff0f3;
-    color:#300;
-    padding:40px;
-    overflow:auto;
-    transition:1s ease;
+position:fixed;
+left:0;
+bottom:-100%;
+width:100%;
+height:100%;
+background:#fff0f3;
+color:#4b0000;
+padding:30px;
+overflow:auto;
+transition:0.8s ease;
+z-index:10;
 }
 
 .carta.aberta{
-    bottom:0;
+bottom:0;
+}
+
+.fechar{
+position:absolute;
+top:15px;
+right:20px;
+font-size:25px;
+cursor:pointer;
 }
 
 .carta h2{
-    margin-bottom:20px;
-    color:#800020;
+margin-bottom:20px;
 }
 
 .carta p{
-    font-size:20px;
-    line-height:1.6;
+font-size:19px;
+line-height:1.7;
 }
 
+/* PÉTALAS */
 .petala{
-    position:fixed;
-    top:-10px;
-    width:15px;
-    height:15px;
-    background:pink;
-    border-radius:50%;
-    opacity:0.7;
-    animation: cair linear infinite;
+position:absolute;
+width:12px;
+height:12px;
+background:pink;
+border-radius:50%;
+opacity:0.8;
+animation: cair linear infinite;
 }
 
 @keyframes cair{
-    to{
-        transform:translateY(110vh) rotate(360deg);
-    }
+to{
+transform:translateY(110vh) rotate(360deg);
 }
-
-@keyframes fadeIn{
-    from{opacity:0;}
-    to{opacity:1;}
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
-    <h1>Desde 02 de Março de 2025 ❤️</h1>
-    <div id="contador"></div>
-    <button onclick="abrirCarta()">💌 Abrir Minha Carta</button>
+<div class="main">
+<h1>Desde 02 de Março de 2025 ❤️</h1>
+<div id="contador"></div>
+<button onclick="abrirCarta()">💌 Abrir Minha Carta</button>
 </div>
 
 <div class="carta" id="carta">
-    <h2>Minha Vida,</h2>
-    <p>
-    Eu poderia escrever mil coisas aqui… mas nenhuma seria suficiente para explicar
-    o que você significa para mim.<br><br>
+<span class="fechar" onclick="fecharCarta()">✖</span>
+<h2>Minha Vida,</h2>
+<p>
+Desde o dia 2 de março de 2025, minha vida nunca mais foi a mesma.
 
-    Desde o dia 2 de março de 2025, minha vida ganhou cor, direção e sentido.
-    Você não foi só alguém que entrou na minha história…
-    você virou o melhor capítulo dela.<br><br>
+Você não entrou na minha história por acaso.
+Você entrou para mudar tudo.
 
-    Cada segundo ao seu lado vale mais que qualquer sonho que eu já tive.
-    Cada sorriso seu cura coisas em mim que ninguém nunca conseguiu curar.<br><br>
+Você virou calma quando eu estava confuso.
+Virou abrigo quando eu precisava.
+Virou o sorriso que salva meu dia.
 
-    E enquanto o mundo muda, o tempo passa e os dias correm…
-    meu sentimento por você só cresce.<br><br>
+Se o mundo inteiro desaparecesse,
+e restasse só você…
+eu ainda teria tudo.
 
-    Eu não estou contando os dias apenas para 2 de março.
-    Estou contando os dias porque cada um deles com você
-    é uma prova de que eu fiz a escolha certa.<br><br>
+Cada segundo com você é um presente.
+E eu não estou esperando só o próximo 2 de março…
+eu estou vivendo cada dia como se fosse especial,
+porque ter você já é motivo suficiente.
 
-    Se um dia você duvidar do meu amor,
-    volta aqui…
-    e lembra que alguém criou um universo inteiro
-    só pra te lembrar o quanto você é amada. ❤️
-    </p>
+Se algum dia você duvidar do meu amor,
+volta aqui.
+Porque alguém fez isso tudo
+só para lembrar você
+o quanto é importante. ❤️
+</p>
 </div>
 
 <audio id="musica" loop>
-<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_1f4d03a2e8.mp3?filename=romantic-love-ambient-110397.mp3">
+<source src="musica.mp3" type="audio/mpeg">
 </audio>
 
 <script>
 
-// DATA DO INÍCIO
+// DATAS
 const inicio = new Date("2025-03-02T00:00:00");
 
-// PRÓXIMO 2 DE MARÇO
 function proximoAniversario(){
-    const agora = new Date();
-    let ano = agora.getFullYear();
-    let data = new Date(`${ano}-03-02T00:00:00`);
-    if(agora > data){
-        data = new Date(`${ano+1}-03-02T00:00:00`);
-    }
-    return data;
+const agora = new Date();
+let ano = agora.getFullYear();
+let data = new Date(`${ano}-03-02T00:00:00`);
+if(agora > data){
+data = new Date(`${ano+1}-03-02T00:00:00`);
+}
+return data;
 }
 
-function atualizarContador(){
-    const agora = new Date();
-    const aniversario = proximoAniversario();
-    const diff = aniversario - agora;
+function atualizar(){
+const agora = new Date();
+const aniversario = proximoAniversario();
+const diff = aniversario - agora;
 
-    const dias = Math.floor(diff/(1000*60*60*24));
-    const horas = Math.floor((diff/(1000*60*60))%24);
-    const minutos = Math.floor((diff/(1000*60))%60);
-    const segundos = Math.floor((diff/1000)%60);
+const dias = Math.floor(diff/(1000*60*60*24));
+const horas = Math.floor((diff/(1000*60*60))%24);
+const minutos = Math.floor((diff/(1000*60))%60);
+const segundos = Math.floor((diff/1000)%60);
 
-    const juntos = agora - inicio;
-    const diasJuntos = Math.floor(juntos/(1000*60*60*24));
+const juntos = agora - inicio;
+const diasJuntos = Math.floor(juntos/(1000*60*60*24));
 
-    document.getElementById("contador").innerHTML =
-        `Estamos juntos há <b>${diasJuntos} dias</b> ❤️<br><br>
-         Faltam <b>${dias} dias ${horas}h ${minutos}m ${segundos}s</b> para nosso próximo 2 de março 💖`;
+document.getElementById("contador").innerHTML =
+`Estamos juntos há <b>${diasJuntos} dias</b> ❤️<br><br>
+Faltam <b>${dias} dias ${horas}h ${minutos}m ${segundos}s</b> para nosso próximo 2 de março 💖`;
 }
 
-setInterval(atualizarContador,1000);
+setInterval(atualizar,1000);
+atualizar();
 
+// CARTA
 function abrirCarta(){
-    document.getElementById("carta").classList.add("aberta");
-    document.getElementById("musica").play();
+document.getElementById("carta").classList.add("aberta");
+document.getElementById("musica").play();
+}
+
+function fecharCarta(){
+document.getElementById("carta").classList.remove("aberta");
 }
 
 // PÉTALAS
-for(let i=0;i<25;i++){
-    let petala = document.createElement("div");
-    petala.classList.add("petala");
-    petala.style.left = Math.random()*100 + "vw";
-    petala.style.animationDuration = (5 + Math.random()*5)+"s";
-    document.body.appendChild(petala);
+for(let i=0;i<30;i++){
+let petala = document.createElement("div");
+petala.classList.add("petala");
+petala.style.left = Math.random()*100 + "vw";
+petala.style.top = "-20px";
+petala.style.animationDuration = (5 + Math.random()*5) + "s";
+document.body.appendChild(petala);
 }
 
 </script>
